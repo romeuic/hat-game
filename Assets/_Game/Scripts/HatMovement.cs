@@ -19,22 +19,21 @@ public class HatMovement : MonoBehaviour
 
   private void DragTouch()
   {
-    // Debug.Log("TouchCount: " + Input.touchCount);
     if (
       Input.touchCount > 0 &&
       Input.GetTouch(0).phase == TouchPhase.Moved &&
       gameController.gameStarted
     )
     {
-      Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+      Touch touch = Input.GetTouch(0);
+      // Vector2 touchDeltaPosition = touch.deltaPosition;
       // transform.Translate(touchDeltaPosition.x * speed * Time.deltaTime, 0f, 0f);
-      transform.Translate(touchDeltaPosition.x * speed * Time.deltaTime, 0f, 0f);
-      // Debug.Log(
-      //   "HatMovementDrag" +
-      //   "\nTouchX:     " + touchDeltaPosition.x +
-      //   "\nTransformX: " + transform.position.x +
-      //   "\nTranslateX: " + touchDeltaPosition.x * speed * Time.deltaTime
-      // );
+
+      // Update hat position
+      Vector3 position = Camera.main.ScreenToWorldPoint(touch.position);
+      position.y = transform.position.y;
+      position.z = transform.position.z;
+      transform.position = position;
     }
   }
 }

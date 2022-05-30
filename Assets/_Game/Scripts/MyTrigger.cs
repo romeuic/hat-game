@@ -14,14 +14,14 @@ public class MyTrigger : MonoBehaviour
   }
   private void OnTriggerEnter2D(Collider2D target)
   {
-    if (target.gameObject.CompareTag("Destroyer"))
-    {
-      Destroy(this.gameObject);
-    }
-    else if (target.gameObject.CompareTag("Point"))
+    if (target.gameObject.CompareTag("Point"))
     {
       gameController.score++;
       uiController.txtScore.text = gameController.score.ToString();
+      Destroy(this.gameObject);
+    }
+    else if (target.gameObject.CompareTag("Destroyer"))
+    {
       Destroy(this.gameObject);
     }
   }
