@@ -28,12 +28,16 @@ public class HatMovement : MonoBehaviour
       Touch touch = Input.GetTouch(0);
       // Vector2 touchDeltaPosition = touch.deltaPosition;
       // transform.Translate(touchDeltaPosition.x * speed * Time.deltaTime, 0f, 0f);
+      float touchX = Camera.main.ScreenToWorldPoint(touch.position).x;
+      transform.Translate(touchX - transform.position.x, 0f, 0f);
+
+
 
       // Update hat position
-      Vector3 position = Camera.main.ScreenToWorldPoint(touch.position);
-      position.y = transform.position.y;
-      position.z = transform.position.z;
-      transform.position = position;
+      // Vector3 position = Camera.main.ScreenToWorldPoint(touch.position);
+      // position.y = transform.position.y;
+      // position.z = transform.position.z;
+      // transform.position = position;
     }
   }
 }
